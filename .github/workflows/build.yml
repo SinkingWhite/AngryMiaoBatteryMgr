@@ -1,0 +1,24 @@
+name: Native Windows build
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build native executable, run checks and package source
+        shell: pwsh
+        run: ./scripts/build.ps1
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Miao-native-win-x64
+          path: |
+            artifacts/native/Miao.exe
+            artifacts/native/NOTICE.md
+            artifacts/native/LICENSE
+            artifacts/native/LICENSES/
+            artifacts/AngryMiaoBattery-source.zip
