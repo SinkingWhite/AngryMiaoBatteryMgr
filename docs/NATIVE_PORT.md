@@ -9,7 +9,7 @@ Only the native implementation is included in the current repository. Native set
 ## Validation, 2026-10-30
 
 - Release MSVC x64 build succeeded with `/W4 /WX`, no warnings.
-- 21 native checks passed: checksum, battery offsets/header/ranges, empty response, zero, DPI table, stage bounds, immutable input and byte preservation, stale/concurrent readback rejection and canceled enumeration.
+- 24 native checks passed: checksum, battery offsets/header/ranges, empty response, zero, DPI table, stage bounds, immutable input and byte preservation, stale/concurrent readback rejection and canceled enumeration.
 - Native hardware read: mouse 98%, spare 86%, active stage 2 / X=800 / Y=800.
 - Native DPI switch: 800 -> 1200 -> 800 passed with readback and unchanged-byte checks; original stage restored.
 - Native GUI smoke opened popup, read data and exited normally (exit 0).
@@ -17,4 +17,4 @@ Only the native implementation is included in the current repository. Native set
 
 The last percentages are receiver observations, not a new physical accuracy certification. The spare-battery jump remains unresolved. Native sleep/unplug stress, Windows login and mixed-DPI screens remain manual tests. Synchronous HID driver stalls can still delay cancellation. CI has been configured for native compilation and protocol tests; remote execution is not claimed here.
 
-Final EXE: 339,968 bytes (332 KiB). The whitelist source archive was extracted into a fresh directory and built successfully; all 21 native checks passed there. Final GUI smoke also exited 0. Import inspection found Windows system DLLs only; no .NET or VC++ runtime DLL dependency. The native build is running locally.
+Final EXE: 339,968 bytes (332 KiB). The whitelist source archive was extracted into a fresh directory and built successfully; all 24 native checks passed there. Final GUI smoke also exited 0. Import inspection found Windows system DLLs only; no .NET or VC++ runtime DLL dependency. The native build is running locally.

@@ -29,7 +29,7 @@ Install Visual Studio 2022 Build Tools with **Desktop development with C++** and
 ./scripts/build.ps1
 ```
 
-The build uses `/MT /O2 /W4 /WX`, statically links the C++ runtime, runs 21 hardware-independent protocol checks and produces `artifacts/native/Miao.exe` plus a corresponding-source archive. No machine-specific absolute path is required.
+The build uses `/MT /O2 /W4 /WX`, statically links the C++ runtime, runs 24 hardware-independent protocol checks and produces `artifacts/native/Miao.exe` plus a corresponding-source archive. No machine-specific absolute path is required.
 
 Close the tray app and official web driver before explicit hardware checks:
 
@@ -39,7 +39,7 @@ Close the tray app and official web driver before explicit hardware checks:
 ./artifacts/native/Miao.exe --smoke-test            # Open, read and exit; no DPI write
 ```
 
-Verified: native compilation, 21 protocol checks, real-device battery/DPI reads, 800 → 1200 → 800 stage switching/restoration, and popup startup/shutdown. Sleep, prolonged operation, mixed-DPI monitors and other firmware need further testing. GitHub Actions builds and runs hardware-independent checks only.
+Verified: native compilation, 24 protocol checks, real-device battery/DPI reads, 800 → 1200 → 800 stage switching/restoration, and popup startup/shutdown. Sleep, prolonged operation, mixed-DPI monitors and other firmware need further testing. GitHub Actions builds and runs hardware-independent checks only.
 
 ## Settings and limitations
 

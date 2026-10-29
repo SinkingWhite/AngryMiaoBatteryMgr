@@ -46,3 +46,5 @@ Each sample re-enumerates and closes its native handle. SetupAPI lists and prepa
 Polling defaults to 30 seconds with bounded failure backoff. The popup and compact tooltip share current readings; failed reads do not present old data as confirmed. Windows notification interface v4 requires NIF_SHOWTIP for the standard tooltip.
 
 Sleep, long-duration operation, native unplug stress, mixed-DPI monitors, absent-spare semantics and other firmware require additional testing. See HARDWARE_TESTING.md and NATIVE_PORT.md. Preserve upstream license notices when distributing the GPL-3.0-only application and its corresponding source.
+
+F7 receiver state at Windows offset 1 may legally be 00 (idle) or 01 (forwarded response ready). Both retain battery fields at 3/11. A real 05 01 00 5C ... 60 frame was initially rejected after DPI polling. The parser now accepts only these two documented states, keeps zero padding at offset 2, rejects unknown states and checks for an empty payload excluding the state byte. Regression checks cover response-ready battery readings, bad padding and response-ready empty telemetry.

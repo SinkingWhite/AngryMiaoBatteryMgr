@@ -1,7 +1,7 @@
 #include <windows.h>
 1 VERSIONINFO
-FILEVERSION 0,2,0,0
-PRODUCTVERSION 0,2,0,0
+FILEVERSION 0,2,1,0
+PRODUCTVERSION 0,2,1,0
 FILEOS VOS_NT_WINDOWS32
 FILETYPE VFT_APP
 BEGIN
@@ -10,9 +10,9 @@ BEGIN
   BLOCK "040904B0"
   BEGIN
    VALUE "FileDescription", "Miao native battery tray\0"
-   VALUE "FileVersion", "0.2.0\0"
+   VALUE "FileVersion", "0.2.1\0"
    VALUE "ProductName", "Angry Miao Battery Tray\0"
-   VALUE "ProductVersion", "0.2.0\0"
+   VALUE "ProductVersion", "0.2.1\0"
    VALUE "LegalCopyright", "GPL-3.0-only; see accompanying source and notices\0"
   END
  END

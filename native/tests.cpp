@@ -63,11 +63,26 @@ int main(int argc, char **argv)
         r[11] = 100;
         auto battery = miao::parseBattery(r);
         check(battery.mouse == 72 && battery.dock == 100, "Windows battery offsets");
+        // F7 response-ready status 01 retains valid battery telemetry after DPI forwarding.
+        auto responseReady = r;
+        responseReady[1] = 1;
+        responseReady[3] = 92;
+        responseReady[11] = 96;
+        auto readyBattery = miao::parseBattery(responseReady);
+        check(readyBattery.mouse == 92 && readyBattery.dock == 96,
+              "response-ready F7 status keeps battery fields");
+        auto emptyReady = miao::packet(0);
+        emptyReady[0] = 5;
+        emptyReady[1] = 1;
+        fails([&] { miao::parseBattery(emptyReady); }, "empty response-ready status refused");
+        auto badPadding = responseReady;
+        badPadding[2] = 1;
+        fails([&] { miao::parseBattery(badPadding); }, "response-ready invalid padding refused");
         auto bad = r;
         bad[0] = 0;
         fails([&] { miao::parseBattery(bad); }, "wrong report ID");
         bad = r;
-        bad[1] = 1;
+        bad[1] = 2;
         fails([&] { miao::parseBattery(bad); }, "junk header");
         bad = r;
         bad[11] = 255;

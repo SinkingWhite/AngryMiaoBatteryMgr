@@ -32,8 +32,8 @@ inline Report packet(unsigned char opcode, unsigned char arg = 0, bool checksum 
 }
 inline Battery parseBattery(const Report &r)
 {
-    if (r[0] != 5 || r[1] != 0 || r[2] != 0 || r[3] > 100 || r[11] > 100 ||
-        std::all_of(r.begin() + 1, r.end(), [](auto b) { return b == 0; }))
+    if (r[0] != 5 || r[1] > 1 || r[2] != 0 || r[3] > 100 || r[11] > 100 ||
+        std::all_of(r.begin() + 2, r.end(), [](auto b) { return b == 0; }))
         throw std::runtime_error("Invalid battery status");
     return {r[3], r[11]};
 }

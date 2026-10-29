@@ -1,6 +1,13 @@
 # Changelog
 
-## 0.2.0 — Unreleased
+## 0.2.1 — 2026-10-30
+
+- Fix battery reports being rejected when the receiver has a forwarded DPI response ready (F7 state 01).
+- Accept only the documented idle/response-ready states and retain padding/range/empty-payload validation.
+- Add three regression checks; 24 native checks now pass.
+- Spare-battery percentage jumps remain an open issue.
+
+## 0.2.0 — 2026-10-30
 
 - Native C++/Win32 single-EXE rewrite with static runtime, approximately 332 KB.
 - Preserves cat-paw tray, light popup, preferences, polling and verified DPI switching.
